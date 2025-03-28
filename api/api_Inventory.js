@@ -2,7 +2,7 @@ import { BASE_URL } from '../config/config.js';
 
 export const apiInventory = {
     all_objects: {
-        endpoint: `${BASE_URL}objects`,
+        endpoint: `${BASE_URL}products/1`,
         method: "GET"
     },
     all_objects_by_id: {

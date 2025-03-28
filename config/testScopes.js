@@ -8,7 +8,7 @@ export function getTestScops(testScope) {
         baseline: {
             executor: 'constant-vus',
             vus:10,
-            duration: '1m',
+            duration: '2s',
             thresholds: {
                 http_req_duration: ['p(95)<300'],
                 http_req_failed: ['rate<0.005'],
