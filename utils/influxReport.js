@@ -1,4 +1,5 @@
-const { InfluxDB } = require('@influxdata/influxdb-client');
+import { InfluxDB } from '@influxdata/influxdb-client';
+
 
 // Configuration - replace with your actual values
 const config = {
@@ -6,7 +7,7 @@ const config = {
     token: 'qATQnrop3ptK7kh0gP9fOKjbEeVmgWGQ4hBFUKs1lfnWMqUBMFGPMXVxTBgne5WP3Tl0ruXcziTJ45DA4H1Skg==',
     org: 'spartan',
     bucket: 'assesment_k6',
-    outputFile: 'k6-results.json'
+
 };
 
 // Create InfluxDB client
@@ -16,7 +17,7 @@ const queryApi = influxDB.getQueryApi(config.org);
 // Flux query to get endpoint performance data
 const fluxQuery = `
 from(bucket: "${config.bucket}")
-  |> range(start: -3h)
+  |> range(start: -10m)
   |> filter(fn: (r) => r._measurement == "http_req_duration" or 
                        r._measurement == "http_reqs" or
                        r._measurement == "http_req_failed")
@@ -83,8 +84,6 @@ queryApi.queryRows(fluxQuery, {
             const endpoint = endpointResults[endpointName];
             const durations = endpoint.durations;
 
-            console.log("sjkdnksjd",endpoint);
-
             // Calculate duration statistics
             const avgDuration = durations.length > 0
                 ? durations.reduce((a, b) => a + b, 0) / durations.length
@@ -123,9 +122,8 @@ queryApi.queryRows(fluxQuery, {
 // Helper function to calculate percentiles
 function calculatePercentile(values, percentile) {
     if (!values || values.length === 0) return 0;
+
     const sorted = [...values].sort((a, b) => a - b);
     const index = Math.ceil(percentile / 100 * sorted.length) - 1;
     return sorted[Math.max(0, index)];
 }
-
-

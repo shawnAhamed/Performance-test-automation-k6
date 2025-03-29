@@ -1,10 +1,7 @@
 import http from 'k6/http';
 import { check } from 'k6';
-import { Trend, Rate, Counter } from 'k6/metrics';
-
-// import { trackMetrics } from './metricsUtil.js';
+import { Trend, Counter, Rate,Gauge } from 'k6/metrics';
 import { apiInventory } from '../api/api_Inventory.js';
-
 
 let responseTime = new Trend('response_time');
 let failureRate = new Rate('failed_requests');
@@ -13,18 +10,7 @@ let p90 = new Trend('p90_latency');
 let p95 = new Trend('p95_latency');
 let p99 = new Trend('p99_latency');
 let throughput = new Trend('throughput');
-
-export const options = {
-    ext: {
-        influxdb: {
-            url: 'http://localhost:8086',
-            token: 'qATQnrop3ptK7kh0gP9fOKjbEeVmgWGQ4hBFUKs1lfnWMqUBMFGPMXVxTBgne5WP3Tl0ruXcziTJ45DA4H1Skg==',
-            org: 'spartan',
-            bucket: 'assesment_k6',
-        }
-    }
-};
-
+export let mymetrics = new Gauge('string_only');
 
 export function apiRequest(apiName) {
     // Extract API details from inventory
@@ -37,8 +23,6 @@ export function apiRequest(apiName) {
 
     console.log(`[DEBUG] Sending ${method} request to ${endpoint}`);
 
-
-
     let response;
 
     try {
@@ -46,10 +30,10 @@ export function apiRequest(apiName) {
             ? http.post(endpoint, JSON.stringify(body), params)
             : http.get(endpoint, params);
 
-
         check(response, { "is status 200": (r) => r.status === 200 });
 
         console.log(`[DEBUG] API Response Status: ${response.status}`);
+
 
         responseTime.add(response.timings.duration);
         failureRate.add(response.status >= 400);
@@ -58,25 +42,11 @@ export function apiRequest(apiName) {
         p95.add(response.timings.duration);
         p99.add(response.timings.duration);
         throughput.add(1 / (response.timings.duration / 1000));
+        mymetrics.add(response.timings.duration, { string_only: 'string' } );
+
 
         // trackMetrics(apiName, response);
-
-        const customFields = {
-            response_body: JSON.stringify(response.body),
-            response_headers: JSON.stringify(response.headers),
-            request_headers: JSON.stringify(params.headers),
-            status_code: response.status,
-            response_size: response.body.length,
-            is_success: response.status === 200
-        };
-        check(response, {
-            'status was 200': (r) => r.status === 200,
-        }, {
-            ...customFields,
-        });
-
-
-        // return response;
+        return response;
     } catch (error) {
         console.error(`[ERROR] API Request Failed: ${error.message}`);
         return { status: 500, body: '{}' }; // Return a safe default response
