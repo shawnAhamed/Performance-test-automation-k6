@@ -6,11 +6,25 @@ import { Trend, Rate, Counter } from 'k6/metrics';
 import { apiInventory } from '../api/api_Inventory.js';
 
 
-
-
-
-
+let responseTime = new Trend('response_time');
+let failureRate = new Rate('failed_requests');
+let requestCount = new Counter('request_count');
+let p90 = new Trend('p90_latency');
+let p95 = new Trend('p95_latency');
+let p99 = new Trend('p99_latency');
 let throughput = new Trend('throughput');
+
+export const options = {
+    ext: {
+        influxdb: {
+            url: 'http://localhost:8086',
+            token: 'qATQnrop3ptK7kh0gP9fOKjbEeVmgWGQ4hBFUKs1lfnWMqUBMFGPMXVxTBgne5WP3Tl0ruXcziTJ45DA4H1Skg==',
+            org: 'spartan',
+            bucket: 'assesment_k6',
+        }
+    }
+};
+
 
 export function apiRequest(apiName) {
     // Extract API details from inventory
@@ -32,15 +46,37 @@ export function apiRequest(apiName) {
             ? http.post(endpoint, JSON.stringify(body), params)
             : http.get(endpoint, params);
 
+
         check(response, { "is status 200": (r) => r.status === 200 });
 
         console.log(`[DEBUG] API Response Status: ${response.status}`);
 
+        responseTime.add(response.timings.duration);
+        failureRate.add(response.status >= 400);
+        requestCount.add(1);
+        p90.add(response.timings.duration);
+        p95.add(response.timings.duration);
+        p99.add(response.timings.duration);
         throughput.add(1 / (response.timings.duration / 1000));
 
         // trackMetrics(apiName, response);
 
-        return response;
+        const customFields = {
+            response_body: JSON.stringify(response.body),
+            response_headers: JSON.stringify(response.headers),
+            request_headers: JSON.stringify(params.headers),
+            status_code: response.status,
+            response_size: response.body.length,
+            is_success: response.status === 200
+        };
+        check(response, {
+            'status was 200': (r) => r.status === 200,
+        }, {
+            ...customFields,
+        });
+
+
+        // return response;
     } catch (error) {
         console.error(`[ERROR] API Request Failed: ${error.message}`);
         return { status: 500, body: '{}' }; // Return a safe default response

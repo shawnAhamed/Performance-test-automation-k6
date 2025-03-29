@@ -8,7 +8,7 @@ import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporte
 const testName = __ENV.TEST_SCOPE || 'smoke';
 const apiendpoint = __ENV.API_ENDPOINT || null;
 const availableAPIs = apiendpoint ? [apiendpoint] : Object.keys(apiInventory);
-// TEST_SCOPE=smoke API_ENDPOINT=all_objects k6 run tests/main_test.js
+
 console.log(`[INFO] Running test for: ${testName}`);
 
 const testScopConfig = getTestScops(testName);
@@ -47,20 +47,3 @@ export function handleSummary(data) {
         'reports/summary.html': htmlReport(data),
     };
 }
-
-// export function handleSummary(data) {
-//     const endpointMetrics = availableAPIs.reduce((metrics, endpoint) => {
-//         metrics[endpoint] = data.metrics;
-//         return metrics;
-//     }, {});
-
-//     const summary = {
-//         endpointMetrics: endpointMetrics,
-//         apiEndpoints: availableAPIs, // Add this line to include API endpoints
-//     };
-
-//     return {
-//         'reports/k6_report.csv': JSON.stringify(summary, null, 2),
-//         'reports/k6_report.html': htmlReport(data),
-//     };
-// }
