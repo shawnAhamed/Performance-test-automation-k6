@@ -2,8 +2,6 @@
 import { apiRequest } from '../utils/apiRequest.js';
 import { getTestScops } from '../config/testScopes.js';
 import { apiInventory } from '../api/api_Inventory.js';
-import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
-
 
 const testName = __ENV.TEST_SCOPE || 'smoke';
 const apiendpoint = __ENV.API_ENDPOINT || null;
@@ -40,10 +38,4 @@ export default function () {
         console.log(`[DEBUG] API Response Status: ${response.status}`);
         console.log(`[DEBUG] API Response Body: ${response.body}`);
     });
-}
-
-export function handleSummary(data) {
-    return {
-        'reports/summary.html': htmlReport(data),
-    };
 }

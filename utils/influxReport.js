@@ -1,5 +1,5 @@
 import { InfluxDB } from '@influxdata/influxdb-client';
-
+import fs from 'fs';
 
 // Configuration - replace with your actual values
 const config = {
@@ -114,6 +114,9 @@ queryApi.queryRows(fluxQuery, {
         });
 
         // Save to JSON file
+        const outputPath = './finalResults.json';
+        fs.writeFileSync(outputPath, JSON.stringify(finalResults, null, 2));
+        console.log(`Results saved to ${outputPath}`);
 
         console.log(finalResults);
     }

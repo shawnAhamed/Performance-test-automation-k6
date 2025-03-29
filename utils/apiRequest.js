@@ -10,7 +10,7 @@ let p90 = new Trend('p90_latency');
 let p95 = new Trend('p95_latency');
 let p99 = new Trend('p99_latency');
 let throughput = new Trend('throughput');
-export let mymetrics = new Gauge('string_only');
+
 
 export function apiRequest(apiName) {
     // Extract API details from inventory
@@ -42,10 +42,7 @@ export function apiRequest(apiName) {
         p95.add(response.timings.duration);
         p99.add(response.timings.duration);
         throughput.add(1 / (response.timings.duration / 1000));
-        mymetrics.add(response.timings.duration, { string_only: 'string' } );
-
-
-        // trackMetrics(apiName, response);
+        mymetrics.add("my custom text");
         return response;
     } catch (error) {
         console.error(`[ERROR] API Request Failed: ${error.message}`);

@@ -1,0 +1,44 @@
+services:
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+      - DOCKER_INFLUXDB_INIT_ORG=spartan
+      - DOCKER_INFLUXDB_INIT_BUCKET=assesment_k6
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${K6_INFLUXDB_TOKEN}
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - influxdb
+
+  k6:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: k6-runner
+    depends_on:
+      - influxdb
+    env_file:
+      - .env
+    volumes:
+      - ./reports:/k6
+    command: >
+      run --out influxdb=http://localhost:8086?org=spartan&bucket=assesment_k6&token=${K6_INFLUXDB_TOKEN}
+      tests/main_test.js
+
+volumes:
+  influxdb_data:
+  grafana_data:
