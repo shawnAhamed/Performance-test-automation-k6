@@ -7,6 +7,16 @@ This project is designed to test the performance of various API endpoints using 
 - [Node.js](https://nodejs.org/) (v14 or later)
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
 - [Go](https://golang.org/) (for building custom K6 binaries)
+- Ensure you have K6 installed on your system.
+- Install the `xk6-influxdb` plugin for K6.
+- Node.js must be installed to run the utility scripts.
+- Create a `.env` file in the root directory with the following variables:
+  ```
+  K6_INFLUXDB_ORG=<your_influxdb_org>
+  K6_INFLUXDB_BUCKET=<your_influxdb_bucket>
+  K6_INFLUXDB_TOKEN=<your_influxdb_token>
+  K6_INFLUXDB_URL=<your_influxdb_url>
+  ```
 
 ---
 
@@ -108,6 +118,20 @@ docker-compose run k6
 After the tests complete, the results will be processed and saved:
 - **Raw Results**: `finalResults.json`
 - **HTML Report**: `results.html`
+
+### 4. Run Tests and Generate Reports Using Script
+To execute the performance tests and generate reports, run the following command:
+```bash
+./runtest.sh
+```
+
+This script will:
+1. Load environment variables from the `.env` file.
+2. Execute the K6 test script located at `tests/main_test.js` using the `xk6-influxdb` plugin.
+3. Generate a report using `utils/influxReport.js`.
+4. Render the results using `utils/renderResults.js`.
+
+Ensure all dependencies and configurations are properly set up before running the script.
 
 ---
 

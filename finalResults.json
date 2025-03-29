@@ -1,64 +1,48 @@
 [
   {
-    "endpoint": "https://dummyjson.com/objects?id=3&id=5&id=10",
+    "endpoint": "https://dummyjson.com/objects",
+    "method": "GET",
+    "requestCount": 4,
+    "failedCount": 4,
+    "failureRate": 100,
+    "averageDuration": 107.404,
+    "minDuration": 105.882,
+    "maxDuration": 109.347,
+    "p90Duration": 109.347,
+    "p95Duration": 109.347,
+    "p99Duration": 109.347,
+    "statusCodes": {
+      "404": 4
+    }
+  },
+  {
+    "endpoint": "https://dummyjson.com/objects/7",
     "method": "GET",
     "requestCount": 2,
     "failedCount": 2,
     "failureRate": 100,
-    "averageDuration": 108.645,
-    "minDuration": 105.624,
-    "maxDuration": 111.666,
-    "p90Duration": 111.666,
-    "p95Duration": 111.666,
-    "p99Duration": 111.666,
+    "averageDuration": 106.5495,
+    "minDuration": 105.119,
+    "maxDuration": 107.98,
+    "p90Duration": 107.98,
+    "p95Duration": 107.98,
+    "p99Duration": 107.98,
     "statusCodes": {
       "404": 2
     }
   },
   {
-    "endpoint": "https://dummyjson.com/product/7",
+    "endpoint": "https://dummyjson.com/objects?id=3&id=5&id=10",
     "method": "GET",
-    "requestCount": 2,
-    "failedCount": 0,
-    "failureRate": 0,
-    "averageDuration": 106.288,
-    "minDuration": 104.47,
-    "maxDuration": 108.106,
-    "p90Duration": 108.106,
-    "p95Duration": 108.106,
-    "p99Duration": 108.106,
-    "statusCodes": {
-      "200": 2
-    }
-  },
-  {
-    "endpoint": "https://dummyjson.com/products/1",
-    "method": "GET",
-    "requestCount": 2,
-    "failedCount": 0,
-    "failureRate": 0,
-    "averageDuration": 107.0305,
-    "minDuration": 105.385,
-    "maxDuration": 108.676,
-    "p90Duration": 108.676,
-    "p95Duration": 108.676,
-    "p99Duration": 108.676,
-    "statusCodes": {
-      "200": 2
-    }
-  },
-  {
-    "endpoint": "https://dummyjson.com/objects",
-    "method": "POST",
     "requestCount": 2,
     "failedCount": 2,
     "failureRate": 100,
-    "averageDuration": 107.055,
-    "minDuration": 106.799,
-    "maxDuration": 107.311,
-    "p90Duration": 107.311,
-    "p95Duration": 107.311,
-    "p99Duration": 107.311,
+    "averageDuration": 104.86349999999999,
+    "minDuration": 104.844,
+    "maxDuration": 104.883,
+    "p90Duration": 104.883,
+    "p95Duration": 104.883,
+    "p99Duration": 104.883,
     "statusCodes": {
       "404": 2
     }

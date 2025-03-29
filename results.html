@@ -16,6 +16,102 @@
 <body>
     <h1>K6 Test Results</h1>
     
+        <h2 class="endpoint">https://dummyjson.com/objects (GET)</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Request Count</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Failed Count</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Failure Rate (%)</td>
+                <td>100.00</td>
+            </tr>
+            <tr>
+                <td>Average Duration (ms)</td>
+                <td>107.40</td>
+            </tr>
+            <tr>
+                <td>Min Duration (ms)</td>
+                <td>105.88</td>
+            </tr>
+            <tr>
+                <td>Max Duration (ms)</td>
+                <td>109.35</td>
+            </tr>
+            <tr>
+                <td>P90 Duration (ms)</td>
+                <td>109.35</td>
+            </tr>
+            <tr>
+                <td>P95 Duration (ms)</td>
+                <td>109.35</td>
+            </tr>
+            <tr>
+                <td>P99 Duration (ms)</td>
+                <td>109.35</td>
+            </tr>
+            <tr>
+                <td>Status Codes</td>
+                <td>404: 4</td>
+            </tr>
+        </table>
+    
+        <h2 class="endpoint">https://dummyjson.com/objects/7 (GET)</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Request Count</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Failed Count</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Failure Rate (%)</td>
+                <td>100.00</td>
+            </tr>
+            <tr>
+                <td>Average Duration (ms)</td>
+                <td>106.55</td>
+            </tr>
+            <tr>
+                <td>Min Duration (ms)</td>
+                <td>105.12</td>
+            </tr>
+            <tr>
+                <td>Max Duration (ms)</td>
+                <td>107.98</td>
+            </tr>
+            <tr>
+                <td>P90 Duration (ms)</td>
+                <td>107.98</td>
+            </tr>
+            <tr>
+                <td>P95 Duration (ms)</td>
+                <td>107.98</td>
+            </tr>
+            <tr>
+                <td>P99 Duration (ms)</td>
+                <td>107.98</td>
+            </tr>
+            <tr>
+                <td>Status Codes</td>
+                <td>404: 2</td>
+            </tr>
+        </table>
+    
         <h2 class="endpoint">https://dummyjson.com/objects?id=3&id=5&id=10 (GET)</h2>
         <table>
             <tr>
@@ -36,171 +132,27 @@
             </tr>
             <tr>
                 <td>Average Duration (ms)</td>
-                <td>108.64</td>
+                <td>104.86</td>
             </tr>
             <tr>
                 <td>Min Duration (ms)</td>
-                <td>105.62</td>
+                <td>104.84</td>
             </tr>
             <tr>
                 <td>Max Duration (ms)</td>
-                <td>111.67</td>
+                <td>104.88</td>
             </tr>
             <tr>
                 <td>P90 Duration (ms)</td>
-                <td>111.67</td>
+                <td>104.88</td>
             </tr>
             <tr>
                 <td>P95 Duration (ms)</td>
-                <td>111.67</td>
+                <td>104.88</td>
             </tr>
             <tr>
                 <td>P99 Duration (ms)</td>
-                <td>111.67</td>
-            </tr>
-            <tr>
-                <td>Status Codes</td>
-                <td>404: 2</td>
-            </tr>
-        </table>
-    
-        <h2 class="endpoint">https://dummyjson.com/product/7 (GET)</h2>
-        <table>
-            <tr>
-                <th>Metric</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Request Count</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Failed Count</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Failure Rate (%)</td>
-                <td>0.00</td>
-            </tr>
-            <tr>
-                <td>Average Duration (ms)</td>
-                <td>106.29</td>
-            </tr>
-            <tr>
-                <td>Min Duration (ms)</td>
-                <td>104.47</td>
-            </tr>
-            <tr>
-                <td>Max Duration (ms)</td>
-                <td>108.11</td>
-            </tr>
-            <tr>
-                <td>P90 Duration (ms)</td>
-                <td>108.11</td>
-            </tr>
-            <tr>
-                <td>P95 Duration (ms)</td>
-                <td>108.11</td>
-            </tr>
-            <tr>
-                <td>P99 Duration (ms)</td>
-                <td>108.11</td>
-            </tr>
-            <tr>
-                <td>Status Codes</td>
-                <td>200: 2</td>
-            </tr>
-        </table>
-    
-        <h2 class="endpoint">https://dummyjson.com/products/1 (GET)</h2>
-        <table>
-            <tr>
-                <th>Metric</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Request Count</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Failed Count</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Failure Rate (%)</td>
-                <td>0.00</td>
-            </tr>
-            <tr>
-                <td>Average Duration (ms)</td>
-                <td>107.03</td>
-            </tr>
-            <tr>
-                <td>Min Duration (ms)</td>
-                <td>105.39</td>
-            </tr>
-            <tr>
-                <td>Max Duration (ms)</td>
-                <td>108.68</td>
-            </tr>
-            <tr>
-                <td>P90 Duration (ms)</td>
-                <td>108.68</td>
-            </tr>
-            <tr>
-                <td>P95 Duration (ms)</td>
-                <td>108.68</td>
-            </tr>
-            <tr>
-                <td>P99 Duration (ms)</td>
-                <td>108.68</td>
-            </tr>
-            <tr>
-                <td>Status Codes</td>
-                <td>200: 2</td>
-            </tr>
-        </table>
-    
-        <h2 class="endpoint">https://dummyjson.com/objects (POST)</h2>
-        <table>
-            <tr>
-                <th>Metric</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Request Count</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Failed Count</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Failure Rate (%)</td>
-                <td>100.00</td>
-            </tr>
-            <tr>
-                <td>Average Duration (ms)</td>
-                <td>107.06</td>
-            </tr>
-            <tr>
-                <td>Min Duration (ms)</td>
-                <td>106.80</td>
-            </tr>
-            <tr>
-                <td>Max Duration (ms)</td>
-                <td>107.31</td>
-            </tr>
-            <tr>
-                <td>P90 Duration (ms)</td>
-                <td>107.31</td>
-            </tr>
-            <tr>
-                <td>P95 Duration (ms)</td>
-                <td>107.31</td>
-            </tr>
-            <tr>
-                <td>P99 Duration (ms)</td>
-                <td>107.31</td>
+                <td>104.88</td>
             </tr>
             <tr>
                 <td>Status Codes</td>
