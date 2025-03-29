@@ -2,7 +2,7 @@ import { BASE_URL } from '../config/config.js';
 
 export const apiInventory = {
     all_objects: {
-        endpoint: `${BASE_URL}products/1`,
+        endpoint: `${BASE_URL}objects`,
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const apiInventory = {
         method: "POST",
     },
     single_object_by_id: {
-        endpoint: `${BASE_URL}product/7`,
+        endpoint: `${BASE_URL}objects/7`,
         method: "GET",
         headers: {
             "Content-Type": "application/json",
