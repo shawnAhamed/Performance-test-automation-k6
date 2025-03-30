@@ -1,50 +1,50 @@
 [
   {
-    "endpoint": "https://dummyjson.com/objects",
+    "endpoint": "https://api.restful-api.dev/objects",
     "method": "GET",
-    "requestCount": 4,
-    "failedCount": 4,
-    "failureRate": 100,
-    "averageDuration": 107.404,
-    "minDuration": 105.882,
-    "maxDuration": 109.347,
-    "p90Duration": 109.347,
-    "p95Duration": 109.347,
-    "p99Duration": 109.347,
+    "requestCount": 6,
+    "failedCount": 0,
+    "failureRate": 0,
+    "averageDuration": 451.47183333333334,
+    "minDuration": 283.07,
+    "maxDuration": 669.905,
+    "p90Duration": 669.905,
+    "p95Duration": 669.905,
+    "p99Duration": 669.905,
     "statusCodes": {
-      "404": 4
+      "200": 6
     }
   },
   {
-    "endpoint": "https://dummyjson.com/objects/7",
+    "endpoint": "https://api.restful-api.dev/objects/7",
     "method": "GET",
-    "requestCount": 2,
-    "failedCount": 2,
-    "failureRate": 100,
-    "averageDuration": 106.5495,
-    "minDuration": 105.119,
-    "maxDuration": 107.98,
-    "p90Duration": 107.98,
-    "p95Duration": 107.98,
-    "p99Duration": 107.98,
+    "requestCount": 3,
+    "failedCount": 0,
+    "failureRate": 0,
+    "averageDuration": 291.024,
+    "minDuration": 260.25,
+    "maxDuration": 308.461,
+    "p90Duration": 308.461,
+    "p95Duration": 308.461,
+    "p99Duration": 308.461,
     "statusCodes": {
-      "404": 2
+      "200": 3
     }
   },
   {
-    "endpoint": "https://dummyjson.com/objects?id=3&id=5&id=10",
+    "endpoint": "https://api.restful-api.dev/objects?id=3&id=5&id=10",
     "method": "GET",
-    "requestCount": 2,
-    "failedCount": 2,
-    "failureRate": 100,
-    "averageDuration": 104.86349999999999,
-    "minDuration": 104.844,
-    "maxDuration": 104.883,
-    "p90Duration": 104.883,
-    "p95Duration": 104.883,
-    "p99Duration": 104.883,
+    "requestCount": 3,
+    "failedCount": 0,
+    "failureRate": 0,
+    "averageDuration": 481.36499999999995,
+    "minDuration": 325.092,
+    "maxDuration": 713.675,
+    "p90Duration": 713.675,
+    "p95Duration": 713.675,
+    "p99Duration": 713.675,
     "statusCodes": {
-      "404": 2
+      "200": 3
     }
   }
 ]

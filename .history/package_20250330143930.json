@@ -1,0 +1,11 @@
+{
+  "name": "performance-test-automation-k6",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node utils/renderResults.js"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  }
+}
