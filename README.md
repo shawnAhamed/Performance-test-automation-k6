@@ -146,7 +146,7 @@ docker-compose up
 - Request Data (Query Parameters, Payload)
 - Request Headers
 - ✅ Response Status
-- ✅ Response Body
+- Response Body
 
 ### Bonus Task
 - ✅ Documented in the README.md file on GitHub.
