@@ -21,8 +21,6 @@ export function apiRequest(apiName) {
 
     let params = { headers: { ...headers } };
 
-
-
     console.log(`[DEBUG] Sending ${method} request to ${endpoint}`);
 
     let response;
@@ -33,7 +31,6 @@ export function apiRequest(apiName) {
             : http.get(endpoint, params);
 
         check(response, { "is status 200": (r) => r.status === 200 });
-
         console.log(`[DEBUG] API Response Status: ${response.status}`);
 
 
